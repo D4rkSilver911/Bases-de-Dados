@@ -1,0 +1,321 @@
+header {
+    width: 100%;
+    height: 90px;
+    background: white;
+    border-bottom: 5px solid gray;
+}
+
+
+
+
+body {
+    width: 100%;
+    margin: 0px;
+    background: LightGray;
+}
+
+
+.notification {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notification:hover {
+    background: red;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+
+footer{
+    position: absolute;
+    background-color: white;
+    clear: both;
+    height:60px;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+}
+
+h1 {
+    position: relative;
+    left: 75px;
+    margin-top: 20px;
+}
+
+#botoes{
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    top: 30px;
+    margin-bottom: 50px;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.1s;
+    display: inline-block;
+}
+#icon {
+
+
+    background-image: url("Assets/logopeq.png");
+    background-size: cover;
+    background-position: center;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    top: 22.5px;
+    left: 22.5px;
+}
+#apptitle {
+
+    color: blue;
+    background: none;
+    border: none;
+    padding:0;
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+
+    position: relative;
+    top: 5px;
+    left: 30px;
+}
+
+
+#exit {
+    vertical-align: middle;
+    background-image: url("../Menus/Botoes/exit1.png");
+    background-size: cover;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 84.5%;
+    top: 2%;
+
+}
+
+#notification {
+    vertical-align: middle;
+    left: 82%;
+    top: 2%;
+
+}
+
+#exit:hover {
+    vertical-align: middle;
+    background-image: url("../Menus/Botoes/exit2.png");
+    background-size: cover;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 84.5%;
+
+}
+
+
+#saldo{
+    background-color: white;
+    color: blue;
+    width: 50%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 75px;
+}
+
+#expulsao{
+    background-color: white;
+    color: blue;
+    width: 50%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 75px;
+}
+
+#substituicao{
+    background-color: white;
+    color: blue;
+    width: 50%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 75px;
+}
+
+#container{
+    overflow: auto;
+}
+
+#PerfilJogador{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin-left: 75px;
+    text-align: center;
+    background-color: white;
+    float: left;
+}
+
+.vitorias {
+    color: grey;
+    font-size: 18px;
+    margin-bottom: 60px;
+}
+
+#PerfilJogador img{
+    height: 250px;
+    width: 250px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 250px;
+}
+
+#PerfilJogador p{
+    color: grey;
+    font-size: 18px;
+}
+
+#informacaobasica{
+    width:50%;
+    float:left;
+    margin-left: 10%;
+    background-color: white;
+    height:500px;
+    margin-top: 25px;
+    border-radius: 5px;
+    padding-left: 3%;
+    padding-top: 2%;
+    font-size: 18px;
+}
+
+#informacaobasica h2{
+    margin-bottom: 45px;
+}
+
+.informacoes{
+    float:left;
+}
+
+label{
+    display: block;
+}
+
+.bio{
+    position: relative;
+    padding-top: 15%;
+    max-width: 50%;
+}
+
+#body_dados{
+    border-radius: 5px;
+    margin-top: 25px;
+    height:500px;
+    background-color: white;
+    margin-left: 75px;
+    width: 260px;
+    opacity: 1 ;
+    float: left;
+}
+#body_dados #avatar{
+    margin-left: 70px;
+    margin-top: 20px;
+}
+#body_dados #nome{
+    font-size: 25px;
+    margin-left: 25px;
+}
+
+#body_dados #vitoriastext{
+    margin-left: 90px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+#body_dados #vitoriasnumber{
+    margin-left: 98px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+#body_dados #contactos, #body_dados #emailtext, #body_dados #telemoveltext{
+    font-weight: bold;
+    margin-left: 10px;
+}
+#body_dados #contactos{
+    margin-top:50px;
+}
+#body_dados #emailtext{
+    margin-top: 30px;
+}
+#body_dados #emailexample, #body_dados #telemovelexample{
+    font-size: 20px;
+    margin-left: 10px;
+}
+#body_dados #telemoveltext{
+    margin-top: 10px;
+}
+
+table {
+    display: block;
+}
+tr {
+
+    padding-left: 30px;
+    display: block;
+    overflow: auto;
+    clear: left;
+    margin-bottom: 30px;
+}
+td {
+
+    display: block;
+    width: 500px;
+}
+td:first-child {
+    float: left;
+    width: auto;
+}
+td:nth-child(2) {
+
+    padding-bottom: 6px;
+    border-top: solid grey 1px;
+}
+td:nth-child(3) {
+
+    padding-top: 6px;
+    border-bottom: solid grey 1px;
+}

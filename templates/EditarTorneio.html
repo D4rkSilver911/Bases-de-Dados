@@ -1,0 +1,108 @@
+ {% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar Torneio</title>
+  <link rel="stylesheet" href="{% static 'jquery/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'EditarTorneios2.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  <script src="{% static 'jquery-1.12.4.js' %}"></script>
+  <script src="{% static 'jquery-ui.js' %}"></script>
+  <script src="{% static 'EditarTorneios.js' %}"></script>
+</head>
+
+<header>
+
+
+  {% for utilizador in query_results %}
+  {% if utilizador.isadmin != True %}
+    <button type="button" id="icon" onclick="location.href='{% url 'mainmenuuser' %}'" ></button>
+    <button type="button" id="apptitle" onclick="location.href='{% url 'mainmenuuser' %}'" >Goal Kick</button>
+  {% endif %}
+  {% if utilizador.isadmin == True %}
+    <button type="button" id="icon" onclick="location.href='{% url 'mainmenuadmin' %}'" ></button>
+    <button type="button" id="apptitle" onclick="location.href='{% url 'mainmenuadmin' %}'" >Goal Kick</button>
+  {% endif %}
+  {% endfor %}
+
+{% for utilizador in query_results2 %}
+<button type="button" id="username" onclick="location.href='{% url 'meuperfil' %}'" >{{utilizador.nome}}</button>
+{% endfor %}
+<button type="button" id="exit" onclick="location.href='{% url 'login' %}'"></button>
+
+</header>
+
+<body>
+	<div id="content2">
+	<div id="content1">
+  {% for torneio in query_results %}
+		<h3 id="title">Editar Torneio "{{torneio.nome}}"</h3>
+{% endfor %}
+	<form action="" method="POST">
+		{% csrf_token %}
+	<div id="datas">
+		<div id="dataini">
+	<label id ="ldatai" for="datai">Alterar data de início:</label>
+	<input  type="text" readonly="readonly" id="datai" name="datai" class="datepicker">
+</div>
+<div id="datafin">
+	<label id ="ldataf" for="dataf">Alterar data de fim:</label>
+	<input  type="text" readonly="readonly" id="dataf" name="dataf" class="datepicker">
+</div>
+</div>
+<div id="match_field">
+	<label id ="lcampo" for="campo">Alterar campo dos jogos:</label>
+	<input  type="text" id="campo" name='campo' class="form-control">
+	</div>
+	<div id="content">
+		<div id="jogos">
+		<label id ="ldia" for="dias">Alterar dia da semana com jogos:</label>
+		<select class="form-control" id="dias" name="dias">
+			<option value="" selected="selected" hidden></option>
+		    <option value="Segunda">Segunda</option>
+		    <option value="Terça">Terça</option>
+		    <option value="Quarta">Quarta</option>
+		    <option value="Quinta">Quinta</option>
+		    <option value="Sexta">Sexta</option>
+		    <option value="Sábado">Sábado</option>
+		    <option value="Domingo">Domingo</option>
+		</select>
+		</div>
+		<div id="horas" >
+		<label id ="lhora" for="hora">Alterar hora de início dos jogos:</label>
+		<input  type="time" name="hora" id = "hora">
+		</div>
+
+	</div>
+	<div id="diassem">
+	<label id ="ldiasem" for="diasem">Alterar dias sem jogos:</label>
+	<input  type="text" readonly="readonly" name="diasem" id="diasem" class="datepicker">
+	</div>
+	  {% for message in messages %}
+	  {% if "noalt" in message.tags %}
+	  <h3 id="messageserr"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+	<div id="buttons">
+    {% for torneio in query_results %}
+          <button class="btn btn-primary btn-sm" id="confirmar" name = "conf" type="submit" onclick="location.href='{% url 'vertorneio' torneio.nome %}'">Confirmar</button>
+
+          {% endfor %}
+        </div>
+        </form>
+
+        {% for torneio in query_results %}
+        <button class="btn btn-primary btn-sm" id="buttons" onclick="location.href='{% url 'vertorneio' torneio.nome %}'">Cancelar</button>
+        {% endfor %}
+</div>
+</div>
+
+
+
+
+</body>
+
+</html>

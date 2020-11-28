@@ -1,0 +1,53 @@
+.header{
+  background-color: white;
+  width: 1500px;
+  height: 90px;
+}
+#logo{
+  border-radius: 4px;
+
+}
+button{
+  background-color: Blue;
+  border-radius: 8px;
+  color: white;
+  border-color:Blue;
+  margin-left: 20px;
+}
+body{
+  background-image: url("Assets/bg3.jpg");
+  background-size: 100%;
+}
+.header #text{
+  margin-left: 125px;
+  margin-top: -75px;
+  border-radius: 4px;
+  font-family: "Helvetica";
+}
+#guardar{
+  position: relative;
+  margin-top: 50px;
+}
+#body{
+  margin-top: 50px;
+  background-color: white;
+  margin-left: 50px;
+  width: 1400px;
+  height: 1200px;
+  opacity: 1 ;
+}
+
+h1{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+
+
+
+
+#voltar{
+  position: static;
+  margin-left: 1063px;
+  margin-top: -20px;
+}

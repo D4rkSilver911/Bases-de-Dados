@@ -1,0 +1,27 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'MainMenu2.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
+<header>
+    <button type="button" id="icon"onclick="location.href ='{% url 'mainmenu' %}' "></button>
+    <button type="button" id="apptitle" onclick="location.href ='{% url 'mainmenu' %}' ">Goal Kick</button>
+</header>
+<body>
+  <h1>Menu</h1>
+    <nav>
+        <button type="button" id="login" onclick="location.href='login2.html'">Iniciar Sessão / Registar</button>
+        <button type="button" id="verlistator" onclick="location.href='ListaTorneios2.html'">Ver Lista de Torneios</button>
+
+
+    </nav>
+    </div>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>

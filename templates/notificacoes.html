@@ -1,0 +1,245 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Resultado dos jogos</title>
+    <link href="{% static 'notificacoes2.css' %}" rel="stylesheet">
+    <!-- Header -->
+    <div class="header" id = "headerd">
+      <img src="../static/Assets/logopeq.png" id = "logo" width="90px">
+      <h1 id = "text">GOAL KICK!</h1>
+    </div>
+    <!-- jQuery library -->
+    <script src="{% static 'jquery.min.js'%}"></script>
+    <!-- Bootstrap library -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'w3.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'datatables.min.css' %}"/>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sl-1.3.1/datatables.min.js"></script>
+
+  </head>
+  <body>
+      {% for torneio in query_results %}
+
+      <h1 style = "color:white">Torneio "{{torneio.nome}}" Notificações</h1>
+      <h1 style = "color:white">Notificações</h1>
+      <div>
+       <button class="btn btn-primary btn-sm" id="voltar" type="submit" onclick="location.href='{% url 'vertorneio' torneio.nome %}'">
+        Voltar
+       </button>
+      </div>
+      {% endfor %}
+      <table class="w3-table w3-bordered w3-centered" id = "table" style="background-color: white;" width="800px">
+        <script>
+        // Basic example
+        $(document).ready(function () {
+          $('#table').DataTable({
+            "pagingType": "simple_numbers"
+          });
+          $('.dataTables_length').addClass('bs-select');
+        });
+        </script>
+        <thead>
+          <tr>
+            <th>Notificação</th>
+            <th>Equipas</th>
+            <th>
+
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+          {% for notificacao in notificacoes %}
+          <td>
+            {{notificacao.texto}}
+          </td>
+          <td>
+            {{notificacao.nome_equipa_a.nome}}<br />{{notificacao.nome_equipa_b.nome}}
+          </td>
+     <td>
+
+       <button class="btn btn-primary btn-sm" id="myBtn" type="submit">
+        Ver
+       </button>
+       <form>
+         <div id = "myModal" class = "modal">
+           <div class = "modal-content">
+             <span class="close">&times;</span>
+             <p>
+                Alerta!<br />
+                O resultado inserido pelos capitães das equipas: <br />"{{notificacao.nome_equipa_a.nome}}" e "{{notificacao.nome_equipa_b.nome}}" não coincidem<br />
+                Como houve um conflito de resutados, insira o resultado manualmente!
+               </p>
+
+                  <form method = "POST">
+                     {% csrf_token %}
+                    Golos Casa: <select name = "golosA">
+                      <option value = "1">
+                        1
+                      </option>
+                      <option value = "2">
+                        2
+                      </option>
+                      <option value = "3">
+                        3
+                      </option>
+                      <option value = "4">
+                        4
+                      </option>
+                      <option value = "5">
+                        5
+                      </option>
+                      <option value = "6">
+                        6
+                      </option>
+                      <option value = "7">
+                        7
+                      </option>
+                      <option value = "8">
+                        8
+                      </option>
+                      <option value = "9">
+                        9
+                      </option>
+                      <option value = "10">
+                        10
+                      </option>
+                      <option value = "11">
+                        11
+                      </option>
+                      <option value = "12">
+                        12
+                      </option>
+                      <option value = "13">
+                        13
+                      </option>
+                      <option value = "14">
+                        14
+                      </option>
+                      <option value = "15">
+                        15
+                      </option>
+                </form>
+
+
+                    <form method = "POST">
+                       {% csrf_token %}
+                      Golos Fora: <select name = "golosB">
+                        <option value = "1">
+                          1
+                        </option>
+                        <option value = "2">
+                          2
+                        </option>
+                        <option value = "3">
+                          3
+                        </option>
+                        <option value = "4">
+                          4
+                        </option>
+                        <option value = "5">
+                          5
+                        </option>
+                        <option value = "6">
+                          6
+                        </option>
+                        <option value = "7">
+                          7
+                        </option>
+                        <option value = "8">
+                          8
+                        </option>
+                        <option value = "9">
+                          9
+                        </option>
+                        <option value = "10">
+                          10
+                        </option>
+                        <option value = "11">
+                          11
+                        </option>
+                        <option value = "12">
+                          12
+                        </option>
+                        <option value = "13">
+                          13
+                        </option>
+                        <option value = "14">
+                          14
+                        </option>
+                        <option value = "15">
+                          15
+                        </option>
+                      </form>
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                        {% for torneio in query_results %}
+                      <button type="button" id="confirmar" name = "conf" onclick="{% url 'notificacoes' torneio.nome %}'">Confirmar</button>
+                      {% endfor %}
+
+                    </form>
+
+
+
+
+
+             </div>
+           </div>
+       </form>
+
+       </td>
+       <td>
+
+       </td>
+
+
+    </tbody>
+    {% endfor %}
+      </table>
+
+
+
+
+
+
+
+
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+  </body>
+</html>

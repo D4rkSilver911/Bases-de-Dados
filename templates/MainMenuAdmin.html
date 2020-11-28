@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'MainMenuAdminss.css' %}">
+</head>
+<header>
+    <button type="button" id="icon" onclick="location.href='MainMenuAdmin.html'" ></button>
+    <button type="button" id="apptitle" onclick="location.href='MainMenuAdmin.html'" >Goal Kick</button>
+    {% for utilizador in query_results %}
+    <button type="button" id="username" onclick="location.href='MeuPerfil.html'" >{{utilizador.nome}}</button>
+    {% endfor %}
+    <button type="button" id="exit" onclick="location.href='{% url 'login' %}'"></button>
+</header>
+<body>
+  <h1>Menu</h1>
+    <nav>
+        <button type="button" id="perfil" onclick="location.href='{% url 'meuperfil' %}'" >O meu perfil</button>
+        <button type="button" id="verlistator" onclick="location.href='{% url 'listatorneio' %}'">Ver Lista de Torneios</button>
+        <div id="main">
+            <button type="button" id="verlistator1" onclick="location.href='criar_torneios.html'">Criar Torneio</button>
+            <h3>Atualmente é gestor de {{number}} torneios.</h3>
+        </div>
+        <button type="button" id="gerirusers" onclick = "location.href='{% url 'gerirpedidos' %}'">Aceitar/Eliminar Users</button>
+
+
+    </nav>
+    </div>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+if request.method=="POST" and 'nomejuntarequipa' in request.POST:
+  nomeequipa=request.POST['nomejuntarequipa']
+  return juntarequip(request,nomeequipa)
+if request.method=="POST" and 'nomeeditarequipa' in request.POST:
+  nomeequipa=request.POST['nomeeditarequipa']
+  return editarequip(request,nomeequipa)

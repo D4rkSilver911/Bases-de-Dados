@@ -1,0 +1,93 @@
+.header{
+  background-color: white;
+  width: 1500px;
+  height: 90px;
+}
+#logo{
+  border-radius: 4px;
+
+}
+body{
+  background-image: url("Assets/bg3.jpg");
+  background-size: 100%;
+}
+#gasto{
+  background-color: white;
+  position: absolute;
+  width: 300px;
+  height: 90px;
+  margin-left: 1.5%;
+  margin-top: 2%;
+}
+#disponivel{
+  background-color: white;
+  position: absolute;
+  width: 300px;
+  height: 90px;
+  margin-left: 1.5%;
+  margin-top: 10%;
+}
+#pagar{
+  margin-left: 35%;
+}
+#situacao_atual{
+  background-color: white;
+  position: absolute;
+  width: 400px;
+  height: 90px;
+  margin-left: 25%;
+  margin-top: 2%;
+}
+.header #text{
+  margin-left: 125px;
+  margin-top: -75px;
+  border-radius: 4px;
+  font-family: "Helvetica";
+}
+#guardar{
+  position: relative;
+  margin-top: 50px;
+}
+#body{
+  margin-top: 50px;
+  background-color: white;
+  margin-left: 50px;
+  width: 1400px;
+  height: 1200px;
+  opacity: 1 ;
+}
+h1{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+
+table{
+  margin-left: 20px;
+}
+table, th, td {
+  border-bottom: 1px solid black;
+  border-collapse:collapse;
+}
+th, td {
+  padding-left: 100px;
+}
+
+#atualizar{
+  position: absolute;
+  width: 30%;
+  margin-left: 60%;
+  margin-top: 2%;
+
+}
+#movimentos{
+  position: absolute;
+  width: 60%;
+  margin-top: 20%;
+}
+
+#voltar{
+  position: static;
+  margin-left: 500px;
+  margin-top: -80px;
+}

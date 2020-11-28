@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Criar Equipa</title>
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'CriarEquipa.css' %}">
+
+
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <script src="{% static '/jquery/jquery.min.js' %}"></script>
+  <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+
+
+</head>
+
+<header>
+
+  {% for utilizador in query_results %}
+{% if utilizador.isadmin != True %}
+  <button type="button" id="icon" onclick="location.href='{% url 'mainmenuuser' %}'" ></button>
+  <button type="button" id="apptitle" onclick="location.href='{% url 'mainmenuuser' %}'" >Goal Kick</button>
+{% endif %}
+{% if utilizador.isadmin == True %}
+  <button type="button" id="icon" onclick="location.href='{% url 'mainmenuadmin' %}'" ></button>
+  <button type="button" id="apptitle" onclick="location.href='{% url 'mainmenuadmin' %}'" >Goal Kick</button>
+{% endif %}
+{% endfor %}
+{% for utilizador in query_results %}
+<button type="button" id="username" onclick="location.href='{% url 'meuperfil' %}'" >{{utilizador.nome}}</button>
+{% endfor %}
+<button type="button" id="exit" onclick="location.href='{% url 'login' %}'"></button>
+
+</header>
+
+<body>
+  <div id="content">
+    <div id="body_dados">
+      {% for jogador in query_results %}
+      <h2 id="nome">{{jogador.nome}} {{jogador.apelido}}</h2>
+      <h4 id="vitoriastext">Vitorias</h4>
+      <h4 id="vitoriasnumber">{{jogador.n_vitorias}}</h4>
+      {% endfor %}
+    </div>
+
+    <div id = "body_form">
+      <form method="POST">
+        {% csrf_token %}
+
+        <h3 id="title">Criar Equipa</h3>
+        <div id = "nomequip">
+
+          <label class="control-label" id ="lname" for="name">Nome da Equipa
+          <span class="asteriskField">*</span></label>
+
+          <input class="form-control" id="nameq" name="nameq" placeholder="Insira o nome da Equipa" type="text" required autofocus/>
+          {% for message in messages %}
+          {% if "nomeq" in message.tags %}
+          <h3 id="messageserr"> {{message}} </h3>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div id="poseq">
+          <label class="control-label" for="pos">Posição
+          <span class="asteriskField">*</span></label>
+          <select required autofocus class="form-control" id="pos" name="pos">
+            <option value="" selected disabled hidden>Escolha a posição onde quer jogar</option>
+            <option value="Guarda-Redes">Guarda-Redes</option>
+            <option value="Avançado">Avançado</option>
+            <option value="Médio">Médio</option>
+            <option value="Defesa">Defesa</option>
+          </select>
+        </div>
+
+        <div id="buttons">
+
+          <button class="btn btn-primary btn-sm" id="criarequip" name = "cria" value=name type="submit" >Criar Equipa</button>
+
+          </form>
+          {% for torneio in query2 %}
+            <button class="btn btn-primary btn-sm" id="cancel" type="submit" onclick="location.href='{% url 'listaequipa' torneio.nome %}'">Cancelar</button>
+          {% endfor %}
+          </div>
+
+
+
+    </div>
+  </div>
+
+</body>
+
+<footer id="footer"></footer>
+
+
+</html>

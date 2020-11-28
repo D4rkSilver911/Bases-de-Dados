@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu perfil</title>
+    <meta charset="utf-8"><link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%static 'PerfilJogador.css' %}">
+</head>
+<header>
+    <button type="button" id="icon"></button>
+    <button type="button" id="apptitle">Goal Kick</button>
+    <button type="button" id="exit"></button>
+</header>
+<body>
+	<main>
+    <h1>Meu Perfil</h1>
+    <div id="container">
+        <div id="body_dados">
+      <img src="{%static 'Menus\Perfil\imagemperfil.jpg' %}" width="120px" id = "avatar">
+      <h2 id="nome">{{user.nome}} {{user.apelido}}</h2>
+      <h4 id="vitoriastext">Saldo</h4>
+      <h4 id="vitoriasnumber">{{user.saldo}}</h4>
+      <h4 id="contactos">Contactos</h4>
+      <h4 id="emailtext">Email</h4>
+      <h4 id="emailexample">{{user.email}}</h4>
+      <h4 id="telemoveltext">Telemóvel</h4>
+      <h4 id="telemovelexample">{{user.contacto}}</h4>
+  </div>
+        <div id="informacaobasica">
+            <h2>Informações Básicas</h2>
+            <p class="informacoes">Número CC<br>{{user.cc}}</p>
+            <p class="informacoes" style="margin-left: 15%;">Posição preferida<br> {{user.posicao_preferida}}</p>
+            <p class="informacoes" style="margin-left: 15%;">Username<br> {{user.username}}</p>
+            <p class="bio">Bio:<br>{{user.bio}}</p>
+        </div>
+
+    </div>
+    <div id="botoes">
+
+        <button name="dinheiro" onclick="location.href='{% url 'add_money1' %}'" id="saldo">Gerir saldo</button>
+
+        <button name="subst" onclick="location.href='{% url 'substituir' %}'" id="saldo">Pedir substituicao</button>
+
+        <button name="editar" onclick="location.href='{% url 'editar' %}'" id="saldo">Editar Perfil</button>
+
+        <button name="editar" onclick="location.href='{% url 'proximosjogos' %}'" id="saldo">Ver próximos jogos</button>
+
+        {% if isAdmin == 1 %}
+        <button id = "saldo" onclick="location.href='{% url 'mainmenuadmin' %}'">Voltar</button>
+        {% endif %}
+
+        {% if isAdmin == 0 %}
+        <button id = "saldo" onclick="location.href='{% url 'mainmenuuser' %}'">Voltar</button>
+        {% endif %}
+
+
+    </div>
+    </main>
+    </div>
+    </div>
+
+
+</body>
+</html>

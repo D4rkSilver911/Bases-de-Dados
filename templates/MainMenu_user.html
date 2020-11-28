@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'MainMenuUsers.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
+<header>
+    <button type="button" id="icon" onclick="location.href='MainMenu_user.html'" ></button>
+    <button type="button" id="apptitle" onclick="location.href='MainMenu_user.html'" >Goal Kick</button>
+    {% for utilizador in query_results %}
+    <button type="button" id="username" onclick="location.href='MeuPerfil.html'" >{{utilizador.nome}}</button>
+    {% endfor %}
+    <button type="button" id="exit" onclick="location.href='{% url 'login' %}'"></button>
+</header>
+<body>
+  <h1>Menu</h1>
+    <nav>
+        <button type="button" id="login" onclick="location.href='MeuPerfil.html'">Meu Perfil</button>
+        <button type="button" id="verlistator" onclick="location.href='ListaTorneios2.html'">Ver Lista de Torneios</button>
+       <div id="main">
+        <button type="button" id="verlistator1" onclick="location.href='criar_torneios.html'">Criar Torneio</button>
+        <h3>Atualmente é gestor de {{number}} torneios.</h3>
+    </div>
+
+
+
+
+    </nav>
+    </div>
+        <footer id="footer"></footer>
+    </div>
+</body>
+</html>

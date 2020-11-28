@@ -1,0 +1,84 @@
+.header{
+  background-color: white;
+  width: 1500px;
+  height: 90px;
+}
+#logo{
+  border-radius: 4px;
+
+}
+body{
+  background-image: url("Assets/bg3.jpg");
+  background-size: 100%;
+}
+.header #text{
+  margin-left: 125px;
+  margin-top: -75px;
+  border-radius: 4px;
+  font-family: "Helvetica";
+}
+#guardar{
+  position: relative;
+  margin-top: 50px;
+}
+#body{
+  margin-top: 50px;
+  background-color: white;
+  margin-left: 50px;
+  width: 1400px;
+  height: 1200px;
+  opacity: 1 ;
+}
+h1{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+#ver{
+  height: 50px;
+  width: 50px;
+}
+
+#dias{
+  height: 45px;
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f3f6f8;
+  box-sizing: border-box;
+}
+
+table{
+  margin-left: 20px;
+}
+table, th, td {
+  border-bottom: 1px solid black;
+  border-collapse:collapse;
+}
+th, td {
+  padding-left: 100px;
+}
+
+#movertab{
+  margin-left: 20%;
+}
+
+#tabela{
+  width: 70%;
+}
+
+#externo{
+  position: relative;
+  width: 30%;
+  margin-left: 60%;
+  margin-top: -14.4%;
+}
+
+#voltar{
+  position: static;
+  margin-left: 800px;
+  margin-top: -20px;
+}

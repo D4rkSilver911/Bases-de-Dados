@@ -1,0 +1,99 @@
+
+{% load static %}
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Register</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet" >
+<link href="{% static 'register2.css' %}" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+
+  </head>
+  <body class="text-center">
+  <form action="" method="POST" class="form-signin">
+
+	  <h1 class="h3 mb-3 font-weight-normal">Registo</h1>
+	  {% csrf_token %}
+
+	  <label for="inputCC" class="sr-only">Cartão de Cidadão</label>
+	  <input type="cc" id="inputCC" name="cc" class="form-control" placeholder="Cartão de Cidadão" required autofocus>
+	  {% for message in messages %}
+	  {% if "carc" in message.tags %}
+	  <h3 id="messageserr" style = "color:red; font-size:16px;"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+
+	  <label for="inputUsername" class="sr-only">Username</label>
+	  <input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus>
+	  {% for message in messages %}
+	  {% if "uname" in message.tags %}
+	  <h3 id="messageserr" style = "color:red; font-size:16px;"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+
+	  <label for="inputNome" class="sr-only">Nome</label>
+	  <input type="nome" name ="nome" id="inputNome" class="form-control" placeholder="Nome" required autofocus>
+
+	  <label for="inputApelido" class="sr-only">Apelido</label>
+	  <input type="apelido" name="apelido" id="inputApelido" class="form-control" placeholder="Apelido" required autofocus>
+
+	  <label for="inputTelemovel" class="sr-only">Telemóvel</label>
+	  <input type="telemovel" name="contacto" id="inputTelemovel" class="form-control" placeholder="Telemóvel" required autofocus>
+	  {% for message in messages %}
+	  {% if "tlm" in message.tags %}
+	  <h3 id="messageserr" style = "color:red; font-size:16px;"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+
+	  <label for="inputEmail" class="sr-only">Email</label>
+	  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+	  {% for message in messages %}
+	  {% if "mail" in message.tags %}
+	  <h3 id="messageserr" style = "color:red; font-size:16px;"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+
+	  <label for="inputPassword" class="sr-only">Password</label>
+	    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+	    <label for="inputConfPassword" class="sr-only">Password</label>
+	      <input type="password" name="repassword" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
+	      {% for message in messages %}
+	  {% if "pw" in message.tags %}
+	  <h3 id="messageserr" style = "color:red; font-size:16px;"> {{message}} </h3>
+	  {% endif %}
+	{% endfor %}
+
+
+	  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registar" onclick="location.href:{% url 'login' %}'">
+	  <p class="member">Já és membro? <a href="login2.html">Entra agora!</a>
+</form>
+
+</body>
+</html>

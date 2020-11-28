@@ -1,0 +1,64 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+h1,label{
+  color: white;
+}
+.member {
+  padding-top: 10px;
+    color: #ffffff;
+}
+body {
+  background-image: url("Assets/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: 1500px 720px  ;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="cc"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 4;
+  border-bottom-left-radius: 4;
+}
+.form-signin input[type="username"], .form-signin input[type="nome"],
+.form-signin input[type="apelido"], .form-signin input[type="telemovel"],
+.form-signin input[type="email"], .form-signin input[type="password"] {
+  margin-top: 5px;
+  margin-bottom: -1px;
+  border-bottom-right-radius: 4;
+  border-bottom-left-radius: 4;
+  border-top-left-radius: 4;
+  border-top-right-radius: 4;
+}
+#inputConfPassword{
+  margin-top: -5px;
+}

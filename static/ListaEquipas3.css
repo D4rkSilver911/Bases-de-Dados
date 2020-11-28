@@ -1,0 +1,147 @@
+header {
+    width: 100%;
+    height: 90px;
+    background: white;
+    border-bottom: 5px solid gray;
+}
+
+
+
+#criar_equipa{
+  border-radius: 8px;
+  border-color: blue;
+  background-color: blue;
+  margin-bottom: 10px;
+  color: white;
+  margin-left: 10px;
+}
+#criar_equipa2{
+  border-radius: 8px;
+  border-color: blue;
+  background-color: blue;
+  margin-bottom: 10px;
+  color: white;
+  margin-left: 20px;
+}
+body {
+    width: 100%;
+    margin: 0px;
+    background-image: url("Assets/bg3.jpg")
+}
+
+
+
+
+
+h1 {
+    position: relative;
+    left: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: black;
+
+}
+
+button {
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.1s;
+    display: inline-block;
+}
+
+#icon {
+
+
+    background-image: url("Assets/logopeq.png");
+    background-size: cover;
+    background-position: center;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    top: 22.5px;
+    left: 22.5px;
+}
+
+#apptitle {
+
+    color: blue;
+    background: none;
+    border: none;
+    padding:0;
+    margin: 0;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+
+    position: relative;
+    top: 5px;
+    left: 30px;
+}
+
+
+#exit {
+    vertical-align: middle;
+
+    background-size: cover;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 84.5%;
+    top: 2%;
+
+}
+
+    #exit:hover {
+        vertical-align: middle;
+        background-image: url("/Menus/Botoes/exit.png");
+        background-size: cover;
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        left: 84.5%;
+
+    }
+
+#ver{
+    background-color: white;
+    color: blue;
+    width: 50%;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+#juntar{
+    margin-left: 85%;
+    background-color: white;
+    color: blue;
+    margin-bottom: 75px;
+    width:200px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+
+
+#editar{
+    background-color: white;
+    color: blue;
+    margin-left: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 250px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Editar Resultado</title>
+    <!-- Header -->
+    <div class="header" id = "headerd">
+      <img src="../static/Assets/logopeq.png" id = "logo" width="90px">
+      <h1 id = "text">GOAL KICK!</h1>
+    </div>
+    <!-- jQuery library -->
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <!-- Bootstrap library -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'editar_resultado2.css'%}" rel="stylesheet">
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'w3.css'%}">
+  </head>
+  <body>
+    <div id = "body">
+      {% for jogo in query_results %}
+      <h1>Editar Resultado</h1>
+      <h4>Equipa Casa</h4>
+      <h4 id = "equipacasa">{{jogo.nome_equipa_a.nome}}</h4>
+      <h4>Equipa Fora</h4>
+      <h4 id = "equipafora">{{jogo.nome_equipa_b.nome}}</h4>
+      <h4>Data</h4>
+      <h4 id = "datajogo">{{jogo.data_inicio}}</h4>
+      <h4 id = "resultado">Resultado Final</h4>
+
+
+      <form method = "POST">
+         {% csrf_token %}
+        Golos Casa: <select name = "golos_casa">
+          <option value = "1">
+            1
+          </option>
+          <option value = "2">
+            2
+          </option>
+          <option value = "3">
+            3
+          </option>
+          <option value = "4">
+            4
+          </option>
+          <option value = "5">
+            5
+          </option>
+          <option value = "6">
+            6
+          </option>
+          <option value = "7">
+            7
+          </option>
+          <option value = "8">
+            8
+          </option>
+          <option value = "9">
+            9
+          </option>
+          <option value = "10">
+            10
+          </option>
+          <option value = "11">
+            11
+          </option>
+          <option value = "12">
+            12
+          </option>
+          <option value = "13">
+            13
+          </option>
+          <option value = "14">
+            14
+          </option>
+          <option value = "15">
+            15
+          </option>
+        {% for message in messages %}
+        {% if "golosAerr" in message.tags %}
+        <h3 id="messageserr"> {{message}} </h3>
+    	  {% endif %}
+    	{% endfor %}
+    </form>
+    <form method = "POST">
+       {% csrf_token %}
+        Golos Fora: <select name = "golos_fora">
+          <option value = "1">
+            1
+          </option>
+          <option value = "2">
+            2
+          </option>
+          <option value = "3">
+            3
+          </option>
+          <option value = "4">
+            4
+          </option>
+          <option value = "5">
+            5
+          </option>
+          <option value = "6">
+            6
+          </option>
+          <option value = "7">
+            7
+          </option>
+          <option value = "8">
+            8
+          </option>
+          <option value = "9">
+            9
+          </option>
+          <option value = "10">
+            10
+          </option>
+          <option value = "11">
+            11
+          </option>
+          <option value = "12">
+            12
+          </option>
+          <option value = "13">
+            13
+          </option>
+          <option value = "14">
+            14
+          </option>
+          <option value = "15">
+            15
+          </option>
+        {% for message in messages %}
+        {% if "golosBerr" in message.tags %}
+        <h3 id="messageserr"> {{message}} </h3>
+    	  {% endif %}
+    	{% endfor %}
+      </form>
+    <form method = "POST">
+      {% csrf_token %}
+      <button type="submit" name = "guardar" onclick="location.href='resultado_jogos.html'">
+       Guardar
+      </button>
+      </form>
+
+
+
+      <button class="btn btn-primary btn-sm" id="cancelar" type="submit" value = "">
+       Cancelar
+      </button>
+      {% endfor %}
+
+      </div>
+
+  </body>
+</html>

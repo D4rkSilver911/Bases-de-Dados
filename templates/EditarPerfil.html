@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar perfil</title>
+    <meta charset="utf-8">
+    <meta charset="utf-8"><link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%static 'PerfilJogador.css' %}">
+</head>
+<header>
+    <button type="button" id="icon"></button>
+    <button type="button" id="apptitle">Goal Kick</button>
+    <button type="button" id="exit"></button>
+</header>
+<body>
+	<main>
+    <h1>Editar Perfil</h1>
+    <form action="" method="POST">
+    {% csrf_token %}
+    <div id="container">
+        <div id="body_dados">
+      <img src="{%static 'Menus\Perfil\imagemperfil.jpg' %}" width="120px" id = "avatar">
+      <h2 id="nome">{{user.nome}} {{user.apelido}}</h2>
+      <h4 id="vitoriastext">Saldo</h4>
+      <h4 id="vitoriasnumber">{{user.saldo}}</h4>
+      <h4 id="contactos">Contactos</h4>
+
+      <label for="emailtext"><h4>Email:</h4></label>
+      <input type="text" id="emailexample" name="email" value="{{user.email}}" required autofocus>
+      <label for="telemoveltext"><h4>Telemóvel:</h4></label>
+      <input type="text" id="telemovelexample" name="tel" value="{{user.contacto}}" required autofocus>
+      {% for message in messages %}
+      {% if "tlm" in message.tags %}
+      <h3 id="messageserr"> {{message}} </h3>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+        <div id="informacaobasica">
+            <h2>Informações Básicas</h2>
+            <div id=informacoes>
+            <label for="numero"> Numero CC:</label>
+            <p id= "numero" name="CC">{{user.cc}}</p></div>
+            <div id=informacoes style="margin-left: 15%;">
+            <label for="posicoes"> Posição preferida:</label>
+            <select name="posicoes" id="posicoes" style="width: 150px;">
+                                                                                      <option value="{{user.posicao_preferida}}">{{user.posicao_preferida}} (Atual)</option>
+                                                                                      <option value="GR">Guarda-Redes</option>
+                                                                                      <option value="DEF">Defesa</option>
+                                                                                      <option value="MED">Médio</option>
+                                                                                      <option value="PL">Avançado</option>
+                                                                                    </select></div>
+            <div id=informacoes style="margin-left: 15%;">
+            <label for=username> Username:</label>
+            <p id="username" name="username">{{user.username}}</p></div>
+            <label for="bio" style="display: block; padding-top: 100px;"> Bio:</label>
+            <textarea name="bio" rows="5" cols="50">{{user.bio}}</textarea>
+        </div>
+
+    </div>
+    <div id="botoes">
+        <button type="input" id="saldo" name="confirmar">Confirmar</button>
+    </div></form>
+
+    <form action="" method="POST">
+    {% csrf_token %}
+        <button type="input" style="width: 290px;" id="substituicao" name="apagar">Apagar Perfil</button></form>
+    <button id = "saldo" onclick="location.href='MeuPerfil.html'">Voltar</button>
+
+    </main>
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Equipa</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{%static 'ListaEquipas3.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="{%static 'Filtro.js' %}"></script><!-- jQuery library -->
+    <script src="{%static 'jquery.min.js' %}"></script>
+    <!-- Bootstrap library -->
+    <link href="{%static 'bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{%static 'resultado_jogos.css' %}" rel="stylesheet">
+    <script src="{%static 'bootstrap.min.js' %}"></script>
+    <script src="{%static 'jquery.min.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sl-1.3.1/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{%static 'datatables.min.css' %}"/>
+</head>
+<header>
+    <button type="button" id="icon"></button>
+    <button type="button" id="apptitle">Goal Kick</button>
+    <button type="button" id="exit"></button>
+</header>
+<body>
+    <main>
+    <div id="container">
+    <h1 style="margin-top: 50px; color:white;">Editar {{editaequipa.nome}}</h1>
+</div>
+
+    <div class="w3-container">
+        <table id ="table" class="w3-table w3-bordered w3-centered" style="background-color: white;">
+          <script>
+        // Basic example
+        $(document).ready(function () {
+          $('#table').DataTable({
+            "pagingType": "simple_numbers" // "simple" option for 'Previous' and 'Next' buttons only
+          });
+          $('.dataTables_length').addClass('bs-select');
+        });
+        </script>
+       <thead>
+    <tr>
+      <th class="w3-left-align">Username</th>
+      <th>Posição</th>
+      <th>Titularidade</th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+  {% for jogador in jogadores_equipa %}
+    <tr>
+      <td class="w3-left-align"><img src="{%static 'Menus\Perfil\imagemperfil.jpg' %}" alt="John" style="width:50px; height:50px; margin-right: 50px;">{{jogador.jogador_utilizador_cc.nome}}</td>
+      <form method="POST">
+
+      {% csrf_token %}
+      <td><select name="posicoes" id="posicoes" style="width: 150px;">
+                                                                                      <option value={{jogador.posicao}}>{{jogador.posicao}} (Atual)</option>
+                                                                                      <option value="GR">Guarda-Redes</option>
+                                                                                      <option value="DEF">Defesa</option>
+                                                                                      <option value="MED">Médio</option>
+                                                                                      <option value="PL">Avançado</option>
+                                                                                    </select></td>
+      <td><select name="estatuto" id="posicoes" style="width: 150px;">
+                                                                                      <option value={{jogador.estatuto}}>{{jogador.estatuto}} (Atual)</option>
+                                                                                      <option value="Titular">Titular</option>
+                                                                                      <option value="Suplente">Suplente</option>
+                                                                                    </select></td>
+      <td><button type="submit" name="guardar" value='{{jogador.jogador_utilizador_cc.username}}' id="ver"> Guardar Alterações</button></form></td>
+    {% if editaequipa.jogador_utilizador_cc != jogador.jogador_utilizador_cc %}
+     <form action="" method="POST">
+      {% csrf_token %}
+      <td><button type="submit" name="tornarcapitao" value='{{jogador.jogador_utilizador_cc.username}}' id="ver"> Tornar Capitão</button></form></td>
+      <td>   
+        {% endif %}
+     {% if editaequipa.jogador_utilizador_cc != jogador.jogador_utilizador_cc %}
+     <form method="POST">
+      {% csrf_token %}
+        <button type="submit" name="nomeperfil" value='{{jogador.jogador_utilizador_cc.username}}' id="ver">Expulsar Jogador</button>
+        </form>
+      </td> 
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+
+        <button id = "ver" style="width: 290px; margin-top: 50px; margin-left: 100px;" onclick="location.href='{%  url 'verequipa' editaequipa.nome %}'">Voltar</button>
+    </main>
+</body>
+
+  
+</html>

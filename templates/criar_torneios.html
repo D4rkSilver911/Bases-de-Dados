@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{%  static 'criar_torneios.css' %}">
+    <title>Criar Torneio</title>
+
+    <!-- Header -->
+    <div class="header" id = "headerd">
+      <img src="../static/Assets/logopeq.png" id = "logo" width="90px">
+      <h1 id = "text">GOAL KICK!</h1>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="{% static 'jquery.min.js' %}"></script>
+    <!-- Bootstrap library -->
+    <link href = "{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'moment-2.4.0.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+  </head>
+  <body>
+    <div id="body_dados">
+      <img src="../static/Assets/avatar-bg.png" width="120px" id = "avatar">
+      {% for user in query_results %}
+      <h2 id="nome">{{user.nome}} {{user.apelido}}</h2>
+      <h4 id="vitoriastext">Vitorias</h4>
+      <h4 id="vitoriasnumber">{{user.n_vitorias}}</h4>
+      {% endfor %}
+  </div>
+    <div id = "body_form">
+      <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <!-- Inline CSS based on choices in "Settings" tab -->
+    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+    <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+    <div class="bootstrap-iso" id = "form">
+     <div class="container-fluid">
+      <div class="row">
+       <div class="col-md-6 col-sm-6 col-xs-12">
+        <form method="POST">
+          	  {% csrf_token %}
+          <h3>Criar Torneio</h3>
+         <div class="form-group ">
+          <label class="control-label requiredField" for="name" >
+           Nome do Torneio
+           <span class="asteriskField">
+            *
+           </span>
+          </label>
+          <input class="form-control" id="name" name="name" placeholder="Insira o nome do Torneio" type="text"/>
+          {% for message in messages %}
+          {% if 'mnome' in message.tags %}
+          <h3 id = "nomeerr"> {{message}} </h3>
+          {% endif %}
+          {% endfor %}
+         </div>
+         <div class="form-group ">
+          <label class="control-label requiredField" for="date">
+           Data de Inicio
+           <span class="asteriskField">
+            *
+           </span>
+          </label>
+          <div class="input-group">
+           <div class="input-group-addon">
+            <i class="fa fa-calendar">
+            </i>
+           </div>
+           <input class="form-control" id="date" name="date_inicio" placeholder="YYYY-MM-DD" type="text"/>
+          </div>
+         </div>
+         <div class="form-group ">
+          <label class="control-label requiredField" for="date1">
+           Data de Fim
+           <span class="asteriskField">
+            *
+           </span>
+          </label>
+          <div class="input-group">
+           <div class="input-group-addon">
+            <i class="fa fa-calendar">
+            </i>
+           </div>
+           <input class="form-control" id="date1" name="date_fim" placeholder="YYYY-MM-DD" type="text"/>
+          </div>
+         </div>
+         <div id = "datas" >
+           <div class="form-group ">
+            <label class="control-label requiredField" for="dia_jogo">
+             Dia da Semana
+             <span class="asteriskField">
+              *
+             </span>
+            </label>
+            <select class="select form-control" id="dia_jogo" name="dia_jogo">
+             <option value="Segunda">
+              Segunda
+             </option>
+             <option value="Ter&ccedil;a">
+              Ter&ccedil;a
+             </option>
+             <option value="Quarta">
+              Quarta
+             </option>
+             <option value="Quinta">
+              Quinta
+             </option>
+             <option value="Sexta">
+              Sexta
+             </option>
+             <option value="S&aacute;bado">
+              S&aacute;bado
+             </option>
+             <option value="Domingo">
+              Domingo
+             </option>
+            </select>
+           </div>
+         </div>
+        <div id = "horas">
+          <div class = "form-group">
+            <label class = "control-label requiredField">
+              Hora
+              <span class = "asteriskField">*</span>
+            </label>
+            <input class = "form-control" id = "hora_jogo" name="hora_jogo" placeholder="hh/mm" type = "time"/>
+          </div>
+        </div>
+
+           <div class="form-group " >
+            <label class="control-label requiredField" for="text">
+             Campo
+             <span class="asteriskField">
+              *
+             </span>
+            </label>
+            <input class="form-control" id="campo" name="campo" placeholder="Insira o campo de jogo" type="text"/>
+           </div>
+
+           <div class="form-group ">
+            <label class="control-label requiredField" for="dia_sem_jogo">
+             Dia sem jogo
+             <span class="asteriskField">
+              *
+             </span>
+            </label>
+            <div class="input-group">
+             <div class="input-group-addon">
+              <i class="fa fa-calendar">
+              </i>
+             </div>
+             <input class="form-control" id="dia_sem_jogo" name="dia_sem_jogo" placeholder="YYYY-MM-DD" type="text"/>
+            </div>
+           </div>
+
+
+
+
+
+
+
+           <div class="form-group">
+            <div>
+             <button class="btn btn-primary btn-sm" id="submit" name="criar" type="submit">
+              Criar Torneio
+             </button>
+            </div>
+           </div>
+           {% if eAdmin == 1 %}
+           <div class="form-group">
+            <div>
+
+             <button class="btn btn-primary btn-sm" id="cancel" name='cancelar'>
+              Cancelar
+             </button>
+            </div>
+           </div>
+           {% endif %}
+           {% if eAdmin == 0 %}
+           <div class="form-group">
+            <div>
+
+             <button class="btn btn-primary btn-sm" id="cancel" name='cancelar'>
+              Cancelar
+             </button>
+            </div>
+           </div>
+           {% endif %}
+           </form>
+           </div>
+           </div>
+           </div>
+           </div>
+
+
+           <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+           <!-- Include jQuery -->
+           <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+           <!-- Include Date Range Picker -->
+           <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+           <script>
+           $(document).ready(function(){
+              var date_input=$('input[name="date_inicio"]'); //our date input has the name "date"
+              var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input.datepicker({
+                  format: 'yyyy-mm-dd',
+                  container: container,
+                  todayHighlight: true,
+                  autoclose: true,
+              })
+           })
+           </script>
+           <script>
+           $(document).ready(function(){
+              var date_input=$('input[name="date_fim"]'); //our date input has the name "date"
+              var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input.datepicker({
+                  format: 'yyyy-mm-dd',
+                  container: container,
+                  todayHighlight: true,
+                  autoclose: true,
+              })
+           })
+           </script>
+           <script>
+           $(document).ready(function(){
+              var date_input=$('input[name="dia_sem_jogo"]'); //our date input has the name "date"
+              var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+              date_input.datepicker({
+                  format: 'yyyy-mm-dd',
+                  container: container,
+                  todayHighlight: true,
+                  autoclose: true,
+              })
+           })
+           </script>
+           </div>
+
+
+                </script>
+
+             </button>
+            </div>
+           </div>
+
+
+
+
+
+         </div>
+       </div>
+  </div>
+</div>
+</div>
+
+
+
+  </body>
+</html>
